@@ -1,0 +1,141 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": "HomeKit Thread Management Service Contribution File",
+            "productData": "",
+            "manufacturer": "Silicon Labs",
+            "model": "",
+            "serialNumber": "",
+            "firmwareVersion": "",
+            "hardwareVersion": "",
+            "services": [
+                {
+                    "variableName": "threadManagementService",
+                    "iid": 6,
+                    "type": "00000701-0000-1000-8000-0026BB765291",
+                    "debugDescription": "ThreadManagement",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "threadManagementServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 601,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagement",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementOpenThreadVersionCharacteristic",
+                            "format": "string",
+                            "iid": 602,
+                            "type": "00000706-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementOpenThreadVersion",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "readRequiresAdminPermissions"
+                            ],
+                            "constraints": {
+                                "maxLength": 128
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPPlatformSetupHandleOpenThreadVersionRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementControlCharacteristic",
+                            "format": "tlv8",
+                            "iid": 603,
+                            "type": "00000704-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementControl",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "readRequiresAdminPermissions",
+                                "writeRequiresAdminPermissions",
+                                "ip.controlPoint",
+                                "ip.supportsWriteResponse"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementControlRead",
+                                "handleWrite": "HAPHandleThreadManagementControlWrite"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementNodeCapabilitiesCharacteristic",
+                            "format": "uint16",
+                            "iid": 604,
+                            "type": "00000702-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementNodeCapabilities",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "readRequiresAdminPermissions"
+                            ],
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 31,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementNodeCapabilitiesRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementStatusCharacteristic",
+                            "format": "uint16",
+                            "iid": 605,
+                            "type": "00000703-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementStatus",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "supportsEventNotification",
+                                "readRequiresAdminPermissions",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 127,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementStatusRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementCurrentTransportCharacteristic",
+                            "format": "bool",
+                            "iid": 606,
+                            "type": "0000022B-0000-1000-8000-0026BB765291",
+                            "debugDescription": "CurrentTransport",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementCurrentTransportRead"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

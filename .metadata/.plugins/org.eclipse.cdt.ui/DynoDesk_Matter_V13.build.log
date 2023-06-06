@@ -1,0 +1,11 @@
+12:42:35 **** Incremental Build of configuration GNU ARM v10.3.1 - Default for project DynoDesk_Matter_V13 ****
+make -j8 all 
+make[1]: Nothing to be done for 'main-build'.
+"C:\SiliconLabs\SimplicityStudio\v5\developer\adapter_packs\commander\commander.exe" postbuild "C:\Users\IT\SimplicityStudio\v5_workspace\DynoDesk_Matter_V13/DynoDesk_Matter_V13.slpb" --parameter build_dir:"C:\Users\IT\SimplicityStudio\v5_workspace\DynoDesk_Matter_V13\GNU ARM v10.3.1 - Default"
+Parsing file C:\Users\IT\SimplicityStudio\v5_workspace\DynoDesk_Matter_V13/DynoDesk_Matter_V13.slpb...
+Running task copy...
+DONE
+ 
+
+12:42:39 Build Finished. 0 errors, 0 warnings. (took 4s.666ms)
+

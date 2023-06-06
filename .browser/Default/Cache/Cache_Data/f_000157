@@ -1,0 +1,713 @@
+{
+    "version": "1.0.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": "HomeKit Accessory",
+            "productData": "d1d2d3d4d5d6d7d8",
+            "manufacturer": "Silicon Labs",
+            "model": "EFR32x",
+            "serialNumber": "152405958",
+            "firmwareVersion": "1.0.1",
+            "hardwareVersion": "1",
+            "services": [
+            {
+                    "variableName": "lightBulbService",
+                    "name": "lightBulbService",
+                    "iid": 60,
+                    "type": "00000043-0000-1000-8000-0026BB765291",
+                    "debugDescription": "LightBulb",
+                    "properties": [
+                        "primaryService"
+                    ],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "lightBulbServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 65,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            },
+                            "generateCallbacks": false,
+                            "constraints": {
+                                "maxLength": 2097152
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbNameCharacteristic",
+                            "format": "string",
+                            "iid": 66,
+                            "type": "00000023-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Name",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleNameRead"
+                            },
+                            "generateCallbacks": false,
+                            "constraints": {
+                                "maxLength": 64
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbOnCharacteristic",
+                            "format": "bool",
+                            "iid": 67,
+                            "type": "00000025-0000-1000-8000-0026BB765291",
+                            "debugDescription": "On",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbOnRead",
+                                "handleWrite": "HandleLightBulbOnWrite"
+                            },
+                            "generateCallbacks": false
+                        },
+                        {
+                            "variableName": "lightBulbBrightnessCharacteristic",
+                            "format": "int",
+                            "iid": 68,
+                            "type": "00000008-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Brightness",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbBrightnessRead",
+                                "handleWrite": "HandleLightBulbBrightnessWrite"
+                            },
+                            "generateCallbacks": false,
+                            "unit": "percentage",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 100,
+                                "stepValue": 1
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbColorTemperatureCharacteristic",
+                            "format": "uint32",
+                            "iid": 69,
+                            "type": "000000CE-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ColorTemperature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbColorTemperatureRead",
+                                "handleWrite": "HandleLightBulbColorTemperatureWrite"
+                            },
+                            "generateCallbacks": false,
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 50,
+                                "maximumValue": 400,
+                                "stepValue": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "accessoryRuntimeInformationService",
+                    "iid": 3,
+                    "type": "00000239-0000-1000-8000-0026BB765291",
+                    "debugDescription": "AccessoryRuntimeInformation",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "accessoryRuntimeInformationServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 301,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationSleepIntervalCharacteristic",
+                            "format": "uint32",
+                            "iid": 302,
+                            "type": "0000023A-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationSleepInterval",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 67108863,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HandleAccessoryRuntimeInformationSleepIntervalRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationPingCharacteristic",
+                            "format": "data",
+                            "iid": 303,
+                            "type": "0000023C-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationPing",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ble.readableWithoutSecurity"
+                            ],
+                            "constraints": {
+                                "maxLength": 0
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryRuntimeInformationPingRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationHeartBeatCharacteristic",
+                            "format": "uint32",
+                            "iid": 304,
+                            "type": "0000024A-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationHeartBeat",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 4294967295,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryRuntimeInformationHeartBeatRead"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "accessoryInformationService",
+                    "iid": 1,
+                    "type": "0000003E-0000-1000-8000-0026BB765291",
+                    "debugDescription": "AccessoryInformation",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "accessoryInformationIdentifyCharacteristic",
+                            "format": "bool",
+                            "iid": 201,
+                            "type": "00000014-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Identify",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable"
+                            ],
+                            "callbacks": {
+                                "handleWrite": "HAPHandleAccessoryInformationIdentifyWrite"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationManufacturerCharacteristic",
+                            "format": "string",
+                            "iid": 202,
+                            "type": "00000020-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Manufacturer",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationManufacturerRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationModelCharacteristic",
+                            "format": "string",
+                            "iid": 203,
+                            "type": "00000021-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Model",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationModelRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationNameCharacteristic",
+                            "format": "string",
+                            "iid": 204,
+                            "type": "00000023-0000-1000-8000-0026BB765291",
+                            "debugDescription": "variableName",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationNameRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationSerialNumberCharacteristic",
+                            "format": "string",
+                            "iid": 205,
+                            "type": "00000030-0000-1000-8000-0026BB765291",
+                            "debugDescription": "SerialNumber",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationSerialNumberRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationFirmwareRevisionCharacteristic",
+                            "format": "string",
+                            "iid": 206,
+                            "type": "00000052-0000-1000-8000-0026BB765291",
+                            "debugDescription": "FirmwareRevision",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationFirmwareRevisionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationHardwareRevisionCharacteristic",
+                            "format": "string",
+                            "iid": 207,
+                            "type": "00000053-0000-1000-8000-0026BB765291",
+                            "debugDescription": "HardwareRevision",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationHardwareRevisionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationADKVersionCharacteristic",
+                            "format": "string",
+                            "iid": 208,
+                            "type": "00000037-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ADKVersion",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationADKVersionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationProductDataCharacteristic",
+                            "format": "data",
+                            "iid": 209,
+                            "type": "00000220-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ProductData",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 8
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationProductDataRead"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "pairingService",
+                    "iid": 4,
+                    "type": "00000055-0000-1000-8000-0026BB765291",
+                    "debugDescription": "Pairing",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "pairingPairSetupCharacteristic",
+                            "format": "tlv8",
+                            "iid": 401,
+                            "type": "0000004C-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairSetup",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ip.controlPoint",
+                                "ble.readableWithoutSecurity",
+                                "ble.writableWithoutSecurity"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairSetupRead",
+                                "handleWrite": "HAPHandlePairingPairSetupWrite"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairVerifyCharacteristic",
+                            "format": "tlv8",
+                            "iid": 402,
+                            "type": "0000004E-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairVerify",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ip.controlPoint",
+                                "ble.readableWithoutSecurity",
+                                "ble.writableWithoutSecurity"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairVerifyRead",
+                                "handleWrite": "HAPHandlePairingPairVerifyWrite"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairingFeaturesCharacteristic",
+                            "format": "uint8",
+                            "iid": 403,
+                            "type": "0000004F-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairingFeatures",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ble.readableWithoutSecurity"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 255,
+                                "stepValue": 0
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairingFeaturesRead"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairingPairingsCharacteristic",
+                            "format": "tlv8",
+                            "iid": 404,
+                            "type": "00000050-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairingPairings",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairingPairingsRead",
+                                "handleWrite": "HAPHandlePairingPairingPairingsWrite"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "hapProtocolInformationService",
+                    "iid": 5,
+                    "type": "000000A2-0000-1000-8000-0026BB765291",
+                    "debugDescription": "HAPProtocolInformation",
+                    "properties": [
+                        "ble.supportsConfiguration"
+                    ],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "hapProtocolInformationServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 501,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        },
+                        {
+                            "variableName": "hapProtocolInformationVersionCharacteristic",
+                            "format": "string",
+                            "iid": 502,
+                            "type": "00000037-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Version",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleHAPProtocolInformationVersionRead"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "siliconLabsOTAService",
+                    "iid": 9,
+                    "type": "f01921b4-478f-a4bf-a14f-63fdeed6141d",
+                    "debugDescription": "SiliconLabsOTA",
+                    "properties": [
+                        "hidden"
+                    ],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "generateCallbacks": true,
+                            "variableName": "SiliconLabsOTAControlCharacteristic",
+                            "format": "data",
+                            "iid": 901,
+                            "type": "636032e0-375e-a488-534e-6dfb6435bff7",
+                            "debugDescription": "SiliconLabsOTAControl",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 1
+                            },
+                            "callbacks": {
+                                "handleWrite": "HandleSiliconLabsHomekitOTAControlWrite"
+                            }
+                        },
+                        {
+                            "variableName": "SiliconLabsOTADataCharacteristic",
+                            "generateCallbacks": true,
+                            "format": "data",
+                            "iid": 902,
+                            "type": "53a1811f-582c-d0a5-4540-fc34f3274298",
+                            "debugDescription": "SiliconLabsOTAData",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 17
+                            },
+                            "callbacks": {
+                                "handleWrite": "HandleSiliconLabsHomekitOTADataWrite"
+                            }
+                        },
+                        {
+                            "generateCallbacks": true,
+                            "variableName": "SiliconLabsOTAServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 903,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "variableName": "threadManagementService",
+                    "iid": 6,
+                    "type": "00000701-0000-1000-8000-0026BB765291",
+                    "debugDescription": "ThreadManagement",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "threadManagementServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 601,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagement",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        },
+                        {
+                            "generateCallbacks": true,
+                            "variableName": "threadManagementOpenThreadVersionCharacteristic",
+                            "format": "string",
+                            "iid": 602,
+                            "type": "00000706-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementOpenThreadVersion",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "readRequiresAdminPermissions"
+                            ],
+                            "constraints": {
+                                "maxLength": 128
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPPlatformSetupHandleOpenThreadVersionRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementControlCharacteristic",
+                            "format": "tlv8",
+                            "iid": 603,
+                            "type": "00000704-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementControl",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "readRequiresAdminPermissions",
+                                "writeRequiresAdminPermissions",
+                                "ip.controlPoint",
+                                "ip.supportsWriteResponse"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementControlRead",
+                                "handleWrite": "HAPHandleThreadManagementControlWrite"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementNodeCapabilitiesCharacteristic",
+                            "format": "uint16",
+                            "iid": 604,
+                            "type": "00000702-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementNodeCapabilities",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "readRequiresAdminPermissions"
+                            ],
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 31,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementNodeCapabilitiesRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementStatusCharacteristic",
+                            "format": "uint16",
+                            "iid": 605,
+                            "type": "00000703-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ThreadManagementStatus",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "supportsEventNotification",
+                                "readRequiresAdminPermissions",
+                                "ble.supportsBroadcastNotification",
+								"ble.supportsDisconnectedNotification"
+                            ],
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 127,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementStatusRead"
+                            }
+                        },
+                        {
+                            "variableName": "threadManagementCurrentTransportCharacteristic",
+                            "format": "bool",
+                            "iid": 606,
+                            "type": "0000022B-0000-1000-8000-0026BB765291",
+                            "debugDescription": "CurrentTransport",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleThreadManagementCurrentTransportRead"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

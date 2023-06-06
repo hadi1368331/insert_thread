@@ -1,0 +1,180 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": " Homekit Accessory Information Service Contribution File",
+            "productData": "",
+            "manufacturer": "Silicon Labs",
+            "model": "",
+            "serialNumber": "",
+            "firmwareVersion": "",
+            "hardwareVersion": "",
+            "services": [
+                {
+                    "variableName": "accessoryInformationService",
+                    "iid": 1,
+                    "type": "0000003E-0000-1000-8000-0026BB765291",
+                    "debugDescription": "AccessoryInformation",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "accessoryInformationIdentifyCharacteristic",
+                            "format": "bool",
+                            "iid": 201,
+                            "type": "00000014-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Identify",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable"
+                            ],
+                            "callbacks": {
+                                "handleWrite": "HAPHandleAccessoryInformationIdentifyWrite"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationManufacturerCharacteristic",
+                            "format": "string",
+                            "iid": 202,
+                            "type": "00000020-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Manufacturer",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationManufacturerRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationModelCharacteristic",
+                            "format": "string",
+                            "iid": 203,
+                            "type": "00000021-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Model",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationModelRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationNameCharacteristic",
+                            "format": "string",
+                            "iid": 204,
+                            "type": "00000023-0000-1000-8000-0026BB765291",
+                            "debugDescription": "variableName",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationNameRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationSerialNumberCharacteristic",
+                            "format": "string",
+                            "iid": 205,
+                            "type": "00000030-0000-1000-8000-0026BB765291",
+                            "debugDescription": "SerialNumber",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationSerialNumberRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationFirmwareRevisionCharacteristic",
+                            "format": "string",
+                            "iid": 206,
+                            "type": "00000052-0000-1000-8000-0026BB765291",
+                            "debugDescription": "FirmwareRevision",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationFirmwareRevisionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationHardwareRevisionCharacteristic",
+                            "format": "string",
+                            "iid": 207,
+                            "type": "00000053-0000-1000-8000-0026BB765291",
+                            "debugDescription": "HardwareRevision",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationHardwareRevisionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationADKVersionCharacteristic",
+                            "format": "string",
+                            "iid": 208,
+                            "type": "34AB8811-AC7F-4340-BAC3-FD6A85F9943B",
+                            "debugDescription": "ADKVersion",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 64
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationADKVersionRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryInformationProductDataCharacteristic",
+                            "format": "data",
+                            "iid": 209,
+                            "type": "00000220-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ProductData",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 8
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryInformationProductDataRead"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

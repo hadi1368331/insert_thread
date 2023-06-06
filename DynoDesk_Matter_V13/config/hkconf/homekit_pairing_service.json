@@ -1,0 +1,99 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": " Homekit Pairing Service Contribution File",
+            "productData": "",
+            "manufacturer": "Silicon Labs",
+            "model": "",
+            "serialNumber": "",
+            "firmwareVersion": "",
+            "hardwareVersion": "",
+            "services": [
+                {
+                    "variableName": "pairingService",
+                    "iid": 4,
+                    "type": "00000055-0000-1000-8000-0026BB765291",
+                    "debugDescription": "Pairing",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "pairingPairSetupCharacteristic",
+                            "format": "tlv8",
+                            "iid": 401,
+                            "type": "0000004C-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairSetup",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ip.controlPoint",
+                                "ble.readableWithoutSecurity",
+                                "ble.writableWithoutSecurity"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairSetupRead",
+                                "handleWrite": "HAPHandlePairingPairSetupWrite"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairVerifyCharacteristic",
+                            "format": "tlv8",
+                            "iid": 402,
+                            "type": "0000004E-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairVerify",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ip.controlPoint",
+                                "ble.readableWithoutSecurity",
+                                "ble.writableWithoutSecurity"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairVerifyRead",
+                                "handleWrite": "HAPHandlePairingPairVerifyWrite"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairingFeaturesCharacteristic",
+                            "format": "uint8",
+                            "iid": 403,
+                            "type": "0000004F-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairingFeatures",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "ble.readableWithoutSecurity"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 255,
+                                "stepValue": 0
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairingFeaturesRead"
+                            }
+                        },
+                        {
+                            "variableName": "pairingPairingPairingsCharacteristic",
+                            "format": "tlv8",
+                            "iid": 404,
+                            "type": "00000050-0000-1000-8000-0026BB765291",
+                            "debugDescription": "PairingPairings",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandlePairingPairingPairingsRead",
+                                "handleWrite": "HAPHandlePairingPairingPairingsWrite"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

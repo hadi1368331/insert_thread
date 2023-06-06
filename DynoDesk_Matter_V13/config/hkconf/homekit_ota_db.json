@@ -1,0 +1,84 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": "Silabs OTA Service Contribution File",
+            "productData": "",
+            "manufacturer": "Silicon Labs",
+            "model": "",
+            "serialNumber": "",
+            "firmwareVersion": "",
+            "hardwareVersion": "",
+            "services": [
+                {
+                    "variableName": "siliconLabsOTAService",
+                    "iid": 9,
+                    "type": "1d14d6ee-fd63-4fa1-bfa4-8f47b42119f0",
+                    "debugDescription": "SiliconLabsOTA",
+                    "properties": [
+                        "hidden"
+                    ],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "SiliconLabsOTAControlCharacteristic",
+                            "format": "data",
+                            "iid": 901,
+                            "type": "f7bf3564-fb6d-4e53-88a4-5e37e0326063",
+                            "debugDescription": "SiliconLabsOTAControl",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 1
+                            },
+                            "callbacks": {
+                                "handleWrite": "HandleSiliconLabsHomekitOTAControlWrite"
+                            }
+                        },
+                        {
+                            "variableName": "SiliconLabsOTADataCharacteristic",
+                            "format": "data",
+                            "iid": 902,
+                            "type": "984227f3-34fc-4045-a5d0-2c581f81a153",
+                            "debugDescription": "SiliconLabsOTAData",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "writable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 17
+                            },
+                            "callbacks": {
+                                "handleWrite": "HandleSiliconLabsHomekitOTADataWrite"
+                            }
+                        },
+                        {
+                            "variableName": "SiliconLabsOTAServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 903,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "hidden"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

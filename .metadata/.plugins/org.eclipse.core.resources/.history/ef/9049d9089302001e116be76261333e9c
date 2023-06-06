@@ -1,0 +1,136 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": "HomeKit Accessory",
+            "productData": "d1d2d3d4d5d6d7d8",
+            "manufacturer": "Silicon Labs",
+            "model": "EFR32x",
+            "serialNumber": "152405958",
+            "firmwareVersion": "1.0.1",
+            "hardwareVersion": "1",
+            "services": [
+            {
+                    "variableName": "lightBulbService",
+                    "name": "lightBulbService",
+                    "iid": 60,
+                    "type": "00000043-0000-1000-8000-0026BB765291",
+                    "debugDescription": "LightBulb",
+                    "properties": [
+                        "primaryService"
+                    ],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "lightBulbServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 65,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            },
+                            "constraints": {
+                                "maxLength": 2097152
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbNameCharacteristic",
+                            "format": "string",
+                            "iid": 66,
+                            "type": "00000023-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Name",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HAPHandleNameRead"
+                            },
+                            "constraints": {
+                                "maxLength": 64
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbOnCharacteristic",
+                            "format": "bool",
+                            "iid": 67,
+                            "type": "00000025-0000-1000-8000-0026BB765291",
+                            "debugDescription": "On",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbOnRead",
+                                "handleWrite": "HandleLightBulbOnWrite"
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbBrightnessCharacteristic",
+                            "format": "int",
+                            "iid": 68,
+                            "type": "00000008-0000-1000-8000-0026BB765291",
+                            "debugDescription": "Brightness",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbBrightnessRead",
+                                "handleWrite": "HandleLightBulbBrightnessWrite"
+                            },
+                            "unit": "percentage",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 100,
+                                "stepValue": 1
+                            }
+                        },
+                        {
+                            "variableName": "lightBulbColorTemperatureCharacteristic",
+                            "format": "uint32",
+                            "iid": 69,
+                            "type": "000000CE-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ColorTemperature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "writable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "callbacks": {
+                                "handleRead": "HandleLightBulbColorTemperatureRead",
+                                "handleWrite": "HandleLightBulbColorTemperatureWrite"
+                            },
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 50,
+                                "maximumValue": 400,
+                                "stepValue": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

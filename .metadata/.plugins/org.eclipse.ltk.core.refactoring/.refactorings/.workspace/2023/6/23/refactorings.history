@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;DynoDesk_Matter_V13&apos;" deleteContents="true" description="Delete resource &apos;DynoDesk_Matter_V13&apos;" element1="/DynoDesk_Matter_V13" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1685844898088"/>
+</session>

@@ -1,0 +1,64 @@
+#include "HAP.h"
+#include "AppUserInput.h"
+
+#include "sl_simple_button_instances.h"
+
+#include "gpiointerrupt.h"
+
+/**
+ * Application button event callback function
+ */
+static HAPPlatformRunLoopCallback userInputEventCallback;
+
+/**
+ * Convert button reference number to user input identifier
+ *
+ * @param sl_button_t*              button reference
+ * @return AppUserInputIdentifier   input identifier
+ */
+
+#if (HAP_TESTING == 1) || (SL_SIMPLE_BUTTON_COUNT >= 1)
+
+// SILABS-ADK
+// WSTK has only 2 buttons, therefore we have redirected these inputs to do the most
+// meaningful actions; change this behavior as necessary
+// two simple button instances btn0 and btn1 should be configured
+static AppUserInputIdentifier ButtonReferenceToId(const sl_button_t * button)
+{
+    if (button == &sl_button_btn0)
+    {
+        // toggle lightbulb
+        return kAppUserInputIdentifier_3;
+    }
+    else if (button == &sl_button_btn1)
+    {
+        // factory reset
+        return kAppUserInputIdentifier_2;
+    }
+    HAPFatalError();
+    return UINT8_MAX;
+}
+
+void sl_button_on_change(const sl_button_t *handle)
+{
+    // react only on button press, not release
+    if (sl_button_get_state(handle) == SL_SIMPLE_BUTTON_PRESSED)
+    {
+        AppUserInputEvent userInputEvent = { .id = ButtonReferenceToId(handle) };
+        if (userInputEvent.id == UINT8_MAX) {
+            // Unsupported IO event
+        return;
+        }
+
+        HAPError err = HAPPlatformRunLoopScheduleCallback(userInputEventCallback, &userInputEvent, sizeof userInputEvent);
+        if (err) {
+            HAPFatalError();
+        }
+    }
+}
+#endif // HAP_TESTING
+void AppUserInputInitPlatform(HAPPlatformRunLoopCallback callback) {
+    userInputEventCallback = callback;
+    // Initialize Buttons
+    // Initialization function sl_simple_button_init_instances() called in sl_driver_init() from sl_system_init()
+}

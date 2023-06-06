@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="OptionalMessageDialog.hide.">
+		<item key="askReindex.detail" value="0"/>
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
+	</section>
+	<section name="PDOMSearchPage">
+		<item key="caseSensitive" value="false"/>
+		<item key="searchFlags" value="227191"/>
+		<list key="previousPatterns">
+			<item value="LEDIdToPin"/>
+			<item value="sl_simple_led_init_instances"/>
+			<item value="sl_simple_button_enable"/>
+			<item value="ClearPairings"/>
+			<item value="AppUserInputInit"/>
+			<item value="sl_system_init"/>
+			<item value="sl_driver_init"/>
+			<item value="sl_simple_button_init_instances"/>
+		</list>
+	</section>
+</section>

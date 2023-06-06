@@ -1,0 +1,106 @@
+{
+    "version": "1.1.0",
+    "accessories": [
+        {
+            "aid": 1,
+            "category": 5,
+            "name": " Homekit AccessoryRuntimeInformation Service Contribution File",
+            "productData": "",
+            "manufacturer": "Silicon Labs",
+            "model": "",
+            "serialNumber": "",
+            "firmwareVersion": "",
+            "hardwareVersion": "",
+            "services": [
+                {
+                    "variableName": "accessoryRuntimeInformationService",
+                    "iid": 3,
+                    "type": "00000239-0000-1000-8000-0026BB765291",
+                    "debugDescription": "AccessoryRuntimeInformation",
+                    "properties": [],
+                    "linkedServices": [],
+                    "characteristics": [
+                        {
+                            "variableName": "accessoryRuntimeInformationServiceSignatureCharacteristic",
+                            "format": "data",
+                            "iid": 301,
+                            "type": "000000A5-0000-1000-8000-0026BB765291",
+                            "debugDescription": "ServiceSignature",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "ip.controlPoint"
+                            ],
+                            "constraints": {
+                                "maxLength": 2097152
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleServiceSignatureRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationSleepIntervalCharacteristic",
+                            "format": "uint32",
+                            "iid": 302,
+                            "type": "0000023A-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationSleepInterval",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 67108863,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HandleAccessoryRuntimeInformationSleepIntervalRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationPingCharacteristic",
+                            "format": "data",
+                            "iid": 303,
+                            "type": "0000023C-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationPing",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable"
+                            ],
+                            "constraints": {
+                                "maxLength": 0
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryRuntimeInformationPingRead"
+                            }
+                        },
+                        {
+                            "variableName": "accessoryRuntimeInformationHeartBeatCharacteristic",
+                            "format": "uint32",
+                            "iid": 304,
+                            "type": "0000024A-0000-1000-8000-0026BB765291",
+                            "debugDescription": "AccessoryRuntimeInformationHeartBeat",
+                            "manufacturerDescription": null,
+                            "properties": [
+                                "readable",
+                                "supportsEventNotification",
+                                "ble.supportsBroadcastNotification",
+                                "ble.supportsDisconnectedNotification"
+                            ],
+                            "unit": "none",
+                            "constraints": {
+                                "minimumValue": 0,
+                                "maximumValue": 4294967295,
+                                "stepValue": 1
+                            },
+                            "callbacks": {
+                                "handleRead": "HAPHandleAccessoryRuntimeInformationHeartBeatRead"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

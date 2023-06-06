@@ -1,0 +1,12 @@
+protectFromDetectionUpdates=false
+label=J-Link Silicon Labs (440135367)
+targetPartOverride=mcu.arm.efr32.mg12.mgm12p32f1024ga
+boardOverrides {
+  brd4304a:0.0.0
+  brd4001a:0.0.0.A01
+}
+EXTENSION:com.silabs.ss.support.mcu.internal.api.part.core.MCUDeviceSettingExtension {
+  tifId:swd
+}
+EXTENSION:com.silabs.ss.support.dci.internal.part.core.SecurePartSettingExtension {
+}

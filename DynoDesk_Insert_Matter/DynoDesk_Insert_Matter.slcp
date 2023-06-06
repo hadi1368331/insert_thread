@@ -1,0 +1,88 @@
+# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
+project_name: DynoDesk_Insert_Matter
+label: DynoDesk_Insert_Matter
+description: HomeKit Lightbulb over Bluetooth LE + OpenThread. This example has no
+  LEDs available, instead WSTK display is used to simulate light behavior.
+category: HomeKit
+package: homekit
+quality: production
+source:
+- {path: app_side_channel.c}
+- {path: app_properties.c}
+- {path: app.c}
+tag: ['hardware:component:button:2+', 'hardware:component:led:2+', prebuilt_demo,
+  'hardware:shared:button:led', 'hardware:device:ram:96', 'hardware:device:flash:768',
+  'hardware:component:display']
+include:
+- path: ''
+  file_list:
+  - {path: app_side_channel.h}
+  - {path: app.h}
+sdk: {id: gecko_sdk, version: 3.2.3}
+toolchain_settings: []
+component:
+- {id: power_manager}
+- {id: homekit_pal_thread}
+- instance: [UART_Data, btn0, btn1]
+  id: simple_button
+- {id: simple_timer}
+- {id: emlib_pcnt}
+- {id: brd4304a}
+- instance: [LED_Green, LED_Red]
+  id: simple_led
+- {id: homekit_ota_dfu}
+- {id: homekit_hap}
+- {id: ustimer}
+- {id: ot_cli_source}
+- instance: [Xmega_USART, vcom]
+  id: uartdrv_usart
+- instance: [CLC, Data_Ready, Read_Data]
+  id: emlib_gpio_simple_init
+- {id: rail_lib_multiprotocol}
+- {id: brd4001a}
+- {id: ot_stack_ftd}
+- {id: MGM12P32F1024GA}
+- {id: emlib_gpio_simple_init_common}
+- {id: homekit_pal_ble}
+- {id: homekit_lightbulb}
+other_file:
+- {path: create_bl_files.bat}
+- {path: create_bl_files.sh}
+define:
+- {name: HAVE_ACCESSORY_REACHABILITY, value: '1'}
+- {name: BLE_ADV_INTERVAL_MS, value: 417.5f}
+- {name: OPENTHREAD_CONFIG_NUM_MESSAGE_BUFFERS, value: '64'}
+config_file:
+- {path: config/hkconf/homekit_dmp.hkconf, directory: hkconf}
+template_contribution:
+- name: event_handler
+  priority: 0
+  value: {event: internal_app_process_action, include: app_side_channel.h, handler: app_side_channel_process_action}
+- name: event_handler
+  priority: 0
+  value: {event: internal_app_init, include: app_side_channel.h, handler: app_side_channel_init}
+requires:
+- {name: bootloader_interface}
+configuration:
+- {name: SL_BT_CONFIG_MAX_CONNECTIONS, value: '1'}
+- {name: SL_STACK_SIZE, value: '0x3010'}
+- {name: SL_HEAP_SIZE, value: '0x4a00'}
+- {name: OPENTHREAD_CONFIG_COAP_API_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_COMMISSIONER_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_DHCP6_CLIENT_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_DHCP6_SERVER_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_DNS_CLIENT_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_REFERENCE_DEVICE_ENABLE, value: '0'}
+- {name: OPENTHREAD_CONFIG_TMF_NETWORK_DIAG_MTD_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_JOINER_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_IP6_SLAAC_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_IP6_FRAGMENTATION_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_TMF_NETDATA_SERVICE_ENABLE, value: '1'}
+- {name: OPENTHREAD_CONFIG_MAX_STATECHANGE_HANDLERS, value: '3'}
+- {name: SL_BOARD_ENABLE_VCOM, value: '1'}
+- {name: SL_MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED, value: '1'}
+- {name: SL_MBEDTLS_KEY_EXCHANGE_PSK_ENABLED, value: '1'}
+ui_hints:
+  highlight:
+  - {path: config/hkconf/homekit_dmp.hkconf, focus: true}
+

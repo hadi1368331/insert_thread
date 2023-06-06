@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="uc.module.setup.CommonProjectPostBuild.com.silabs.ss.framework.project.toolchain.core.default#com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.3.1.20210824.gcc" propertyScope="project">
+  <file name="DynoDesk_Matter_V13.slpb" builtin="true" generated="true"/>
+  <postbuildStep>$(commander) postbuild &quot;$(project)/DynoDesk_Matter_V13.slpb&quot; --parameter build_dir:&quot;$(builddir)&quot;</postbuildStep>
+</project>
